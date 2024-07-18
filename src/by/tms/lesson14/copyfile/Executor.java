@@ -1,5 +1,6 @@
 package by.tms.lesson14.copyfile;
 
+import by.tms.lesson14.copyfile.service.Copier;
 import by.tms.lesson14.copyfile.service.GetterHash;
 
 import java.io.FileReader;
@@ -12,6 +13,7 @@ public class Executor {
     public static void main(String[] args) {
         final String failed = "Результат копирования: не удачно";
         final String success = "Результат копирования: успешно";
+        final String regexFileNamePath = "([A-Za-z]:\\)((?:.*\\)?)([\\w\\s]+\\.\\w+)";
 
         String original = "C:\\Users\\123\\IdeaProjects\\Lesson-14-c30-onl-CopyFile\\file.txt";
         boolean isApproved = false;
@@ -26,22 +28,11 @@ public class Executor {
         String copy = scanner.next();
         // todo проверить имя и путь через регулярку
         scanner.close();
-
-        StringBuilder stringBuilder = new StringBuilder();
-        try (FileReader fileReader = new FileReader(original);
-             FileWriter fileWriter = new FileWriter(copy)) {
-            while (fileReader.ready()) {
-                stringBuilder.append((char) fileReader.read());
-            }
-            fileWriter.write(stringBuilder.toString());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-// проверка правильности копирования через хэш-функцию
+        // копирование файла с проверкой
         try {
-            if (GetterHash.getHash(original).equals(GetterHash.getHash(copy))) System.out.println(success);
+            if (Copier.copyFile(original, copy)) System.out.println(success);
             else System.out.println(failed);
-        } catch (IOException | NoSuchAlgorithmException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
