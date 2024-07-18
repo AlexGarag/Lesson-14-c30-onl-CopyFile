@@ -16,7 +16,8 @@ public class Executor {
         final String success = "Результат копирования: успешно";
 //        final String regexFileNamePath = "^([a-zA-Z]:)?(\\[a-zA-Z0-9._-]+)+\\?$";
 
-        String originalFileNameWithPass = "C:\\Users\\123\\IdeaProjects\\Lesson-14-c30-onl-CopyFile\\file.txt";
+        String originalFileNameWithPass = "C:\\Users\\123\\IdeaProjects\\Lesson-14-c30-onl-CopyFile\\files\\file.txt";
+        String copyFileName = "C:\\Users\\123\\IdeaProjects\\Lesson-14-c30-onl-CopyFile\\files\\text2.txt";
 //        String originalFileNameWithPass = "Lesson-14-c30-onl-CopyFile\\*.txt";
         String originalFileName = originalFileNameWithPass.substring((originalFileNameWithPass.lastIndexOf('\\')) + 1);
 //        boolean isApproved = false;
@@ -28,7 +29,7 @@ public class Executor {
         if (/*letter == 'y' || letter == 'д'*/true) {
 // аналог    ConsoleEmployee.acceptFileName() см. ExecutorStatic
 //            System.out.print("Введите имя файла-копии: ");
-            String copyFileName = /*scanner.next()*/"text2.txt";
+//            String copyFileName = /*scanner.next()*/"text2.txt";
 
 // копирование файла
             if (copyFile(originalFileName, copyFileName)) {
