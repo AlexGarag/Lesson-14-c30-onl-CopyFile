@@ -16,10 +16,13 @@ public class Executor {
         final String success = "Результат копирования: успешно";
 //        final String regexFileNamePath = "^([a-zA-Z]:)?(\\[a-zA-Z0-9._-]+)+\\?$";
 
-        String originalFileNameWithPass = "C:\\Users\\123\\IdeaProjects\\Lesson-14-c30-onl-CopyFile\\files\\file.txt";
-        String copyFileName = "C:\\Users\\123\\IdeaProjects\\Lesson-14-c30-onl-CopyFile\\files\\text2.txt";
+        String originalFileName = "file.txt";
+        String originalPassFile = "C:\\Users\\123\\IdeaProjects\\Lesson-14-c30-onl-CopyFile\\files";
+        String copyFileName = "text2.txt";
+        String copyPassFile = "C:\\Users\\123\\IdeaProjects\\Lesson-14-c30-onl-CopyFile\\files";
+        String original = originalPassFile + "\\" + originalFileName;
+        String copy = copyPassFile + "\\" + copyFileName;
 //        String originalFileNameWithPass = "Lesson-14-c30-onl-CopyFile\\*.txt";
-        String originalFileName = originalFileNameWithPass.substring((originalFileNameWithPass.lastIndexOf('\\')) + 1);
 //        boolean isApproved = false;
 //        Scanner scanner = new Scanner(System.in);
 
@@ -32,10 +35,10 @@ public class Executor {
 //            String copyFileName = /*scanner.next()*/"text2.txt";
 
 // копирование файла
-            if (copyFile(originalFileName, copyFileName)) {
+            if (copyFile(original, copy)) {
 // с итоговой проверкой "сходимости" файлов
                 try {
-                    if (GetterHash.getHash(originalFileName).equals(GetterHash.getHash(copyFileName))) System.out.println(success);
+                    if (GetterHash.getHash(original).equals(GetterHash.getHash(copy))) System.out.println(success);
                     else System.out.println(hashFailed);
                 } catch (IOException | NoSuchAlgorithmException e) {
                     System.out.println(failed);
