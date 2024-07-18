@@ -15,14 +15,14 @@ public class Copier {
             }
             fileWriter.write(stringBuilder.toString());
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            return false;
         }
 // проверка правильности копирования через хэш-функцию
         try {
             if (GetterHash.getHash(srcFile).equals(GetterHash.getHash(destFile))) return true;
             else return false;
         } catch (IOException | NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
+            return false;
         }
     }
 }
