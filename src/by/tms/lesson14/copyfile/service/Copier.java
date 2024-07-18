@@ -3,10 +3,9 @@ package by.tms.lesson14.copyfile.service;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
 
 public class Copier {
-    public static boolean copyFile(String srcFile, String destFile) throws IOException {
+    public static boolean copyFile(String srcFile, String destFile) {
         StringBuilder stringBuilder = new StringBuilder();
         try (FileReader fileReader = new FileReader(srcFile);
              FileWriter fileWriter = new FileWriter(destFile)) {
@@ -17,12 +16,6 @@ public class Copier {
         } catch (IOException e) {
             return false;
         }
-// проверка правильности копирования через хэш-функцию
-        try {
-            if (GetterHash.getHash(srcFile).equals(GetterHash.getHash(destFile))) return true;
-            else return false;
-        } catch (IOException | NoSuchAlgorithmException e) {
-            return false;
-        }
+        return true;
     }
 }
