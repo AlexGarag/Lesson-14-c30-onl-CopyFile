@@ -10,6 +10,8 @@ import java.util.Scanner;
 
 public class Executor {
     public static void main(String[] args) {
+        final String failed = "Результат копирования: не удачно";
+        final String success = "Результат копирования: успешно";
 
         String original = "C:\\Users\\123\\IdeaProjects\\Lesson-14-c30-onl-CopyFile\\file.txt";
         boolean isApproved = false;
@@ -22,7 +24,7 @@ public class Executor {
         // аналог    ConsoleEmployee.acceptFileName() см. ExecutorStatic
         System.out.print("Введите имя файла-копии: ");
         String copy = scanner.next();
-
+        // todo проверить имя и путь через регулярку
         scanner.close();
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -35,14 +37,12 @@ public class Executor {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-        // проверка правильности копирования через хэш-функцию
+// проверка правильности копирования через хэш-функцию
         try {
-            if (GetterHash.getHash(original).equals(GetterHash.getHash(copy))) System.out.println("Результат копирования: успешно");
-            else System.out.println("Результат копирования: не удачно");
+            if (GetterHash.getHash(original).equals(GetterHash.getHash(copy))) System.out.println(success);
+            else System.out.println(failed);
         } catch (IOException | NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
-
     }
 }
