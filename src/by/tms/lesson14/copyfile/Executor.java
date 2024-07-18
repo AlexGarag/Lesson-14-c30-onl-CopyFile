@@ -8,11 +8,15 @@ public class Executor {
         String fileBeingCopied = "textFrom.txt";
         boolean isApproved = false;
         Scanner scanner = new Scanner(System.in);
+
+        // аналог    ConsoleEmployee.suggestCopying(fileBeingCopied) см. ExecutorStatic
         System.out.print("Вы хотите произвести копирование файла \"" + fileBeingCopied + "\"? Д/Н (Y/N) ");
         char letter = scanner.nextLine().toLowerCase().charAt(0);
-//        if (letter == 'y' || letter == 'д') isApproved = true;
+
+        // аналог    ConsoleEmployee.acceptFileName() см. ExecutorStatic
         System.out.print("Введите имя файла-копии: ");
         String nameFile = scanner.next();
+
         scanner.close();
 
         System.out.println(nameFile);
