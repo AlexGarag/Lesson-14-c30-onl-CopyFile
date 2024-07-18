@@ -4,7 +4,6 @@ import by.tms.lesson14.copyfile.service.GetterHash;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import java.util.Scanner;
 
 import static by.tms.lesson14.copyfile.service.Copier.copyFile;
 //import static java.lang.System.exit;
@@ -16,7 +15,8 @@ public class Executor {
         final String success = "Результат копирования: успешно";
 //        final String regexFileNamePath = "^([a-zA-Z]:)?(\\[a-zA-Z0-9._-]+)+\\?$";
 
-        String originalFileName = "file.txt";
+
+        String originalFileName = "files/file.txt";
         String originalPassFile = "C:\\Users\\123\\IdeaProjects\\Lesson-14-c30-onl-CopyFile\\files";
         String copyFileName = "text2.txt";
         String copyPassFile = "C:\\Users\\123\\IdeaProjects\\Lesson-14-c30-onl-CopyFile\\files";
@@ -34,9 +34,9 @@ public class Executor {
 //            System.out.print("Введите имя файла-копии: ");
 //            String copyFileName = /*scanner.next()*/"text2.txt";
 
-// копирование файла
+// копирование файла с проверкой успешности
             if (copyFile(original, copy)) {
-// с итоговой проверкой "сходимости" файлов
+// и с итоговой проверкой "сходимости" файлов
                 try {
                     if (GetterHash.getHash(original).equals(GetterHash.getHash(copy))) System.out.println(success);
                     else System.out.println(hashFailed);
