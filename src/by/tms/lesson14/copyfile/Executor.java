@@ -9,32 +9,31 @@ import java.security.NoSuchAlgorithmException;
 import static by.tms.lesson14.copyfile.service.ConsoleEmployee.*;
 import static by.tms.lesson14.copyfile.service.Copier.copyFile;
 import static by.tms.lesson14.copyfile.service.GetterHash.getHash;
+import static by.tms.lesson14.copyfile.service.Verifier.verifyNamePathFile;
 
 public class Executor {
     public static void main(String[] args) {
         final String canceled = "Копирование отменено";
         final String fileNotFound = " - файл-источник не найден!";
+        final String invalidNamePathFile = " - некорректные имя-путь файла-копии!";
         final String toEnterNameCopy = "Введите имя файла-копии: ";
         final String toEnterPathCopy = "Введите путь к файлу-копии: ";
         final String failed = "Результат копирования: не удачно";
         final String hashFailed = "Результат копирования: файлы различаются";
         final String success = "Результат копирования: успешно";
-//        final String regexFileNamePath = "^([a-zA-Z]:)?(\\[a-zA-Z0-9._-]+)+\\?$";
+        final String regexFileNamePath = "([a-zA-Z]:)?(\\\\[a-zA-Z0-9_.-]+)+\\\\?";
 
         String originalFileName = "file.txt";
         String originalPassFile = "C:\\Users\\123\\IdeaProjects\\Lesson-14-c30-onl-CopyFile\\files";
 
         File originalFile = new File(originalPassFile, originalFileName);
 
-        if (!suggestCoping(originalFile.getName())) {
-            cancelActionExit(canceled);
-        }
-        if (!originalFile.exists()) {
-            cancelActionExit(canceled + fileNotFound);
-        }
+        if (!suggestCoping(originalFile.getName())) cancelActionExit(canceled);
+        if (!originalFile.exists()) cancelActionExit(canceled + fileNotFound);
 
         File copyFile = new File(enterStringData(toEnterPathCopy), enterStringData(toEnterNameCopy));
-//todo проверить имя файла и путь по регулярке
+        if (!verifyNamePathFile(copyFile, regexFileNamePath)) cancelActionExit(canceled + invalidNamePathFile);
+
 //
 // копирование файла с проверкой успешности
 //
