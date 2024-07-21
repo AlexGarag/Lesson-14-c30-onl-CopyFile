@@ -9,7 +9,7 @@ import java.security.NoSuchAlgorithmException;
 import static by.tms.lesson14.copyfile.service.ConsoleEmployee.*;
 import static by.tms.lesson14.copyfile.service.Copier.copyFile;
 import static by.tms.lesson14.copyfile.service.GetterHash.getHash;
-import static by.tms.lesson14.copyfile.service.Verifier.verifyNamePathFile;
+import static by.tms.lesson14.copyfile.service.Verifier.verifyText;
 
 public class Executor {
     public static void main(String[] args) {
@@ -32,7 +32,7 @@ public class Executor {
         if (!originalFile.exists()) cancelActionExit(canceled + fileNotFound);
 
         File copyFile = new File(enterStringData(toEnterPathCopy), enterStringData(toEnterNameCopy));
-        if (!verifyNamePathFile(copyFile, regexFileNamePath)) cancelActionExit(canceled + invalidNamePathFile);
+        if (!verifyText(copyFile.getPath(), regexFileNamePath)) cancelActionExit(canceled + invalidNamePathFile);
 
 //
 // копирование файла с проверкой успешности

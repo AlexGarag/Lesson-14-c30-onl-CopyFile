@@ -1,13 +1,12 @@
 package by.tms.lesson14.copyfile.service;
 
-import java.io.File;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Verifier {
-    public static boolean verifyNamePathFile(File file, String regex) {
+    public static boolean verifyText(String text, String regex) {
         Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(file.getPath());
+        Matcher matcher = pattern.matcher(text);
         if (matcher.matches()) {
             return true;
         }
