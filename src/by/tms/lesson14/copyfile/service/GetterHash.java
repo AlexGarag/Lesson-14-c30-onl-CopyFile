@@ -1,14 +1,15 @@
 package by.tms.lesson14.copyfile.service;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class GetterHash {
-    public static String getHash(String fileName) throws IOException, NoSuchAlgorithmException {
+    public static String getHash(File file) throws IOException, NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("MD5");
-        FileInputStream fis = new FileInputStream(fileName);
+        FileInputStream fis = new FileInputStream(file);
 
         byte[] dataBytes = new byte[1024];
 
