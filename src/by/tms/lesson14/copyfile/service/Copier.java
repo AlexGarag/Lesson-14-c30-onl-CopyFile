@@ -15,7 +15,6 @@ public class Copier {
                 stringBuilder.append((char) fileReader.read());
             }
             fileWriter.write(stringBuilder.toString());
-            fileWriter.flush();
         } catch (IOException e) {
             return false;
         }
@@ -60,7 +59,9 @@ public class Copier {
             }
         }
         try {
+            fis.close();
             fos.flush();
+            fos.close();
         } catch (IOException e) {
             return false;
         }
