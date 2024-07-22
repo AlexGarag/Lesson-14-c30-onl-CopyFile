@@ -11,6 +11,7 @@ import java.nio.file.StandardCopyOption;
 public class Copier {
     public static boolean copyFile(File srcFile, File destFile) {
         StringBuilder stringBuilder = new StringBuilder();
+
         try (FileReader fileReader = new FileReader(srcFile);
              FileWriter fileWriter = new FileWriter(destFile)) {
             while (fileReader.ready()) {
