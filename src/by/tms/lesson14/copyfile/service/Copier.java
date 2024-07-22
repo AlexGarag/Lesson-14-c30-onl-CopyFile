@@ -15,6 +15,7 @@ public class Copier {
                 stringBuilder.append((char) fileReader.read());
             }
             fileWriter.write(stringBuilder.toString());
+            fileWriter.flush();
         } catch (IOException e) {
             return false;
         }
